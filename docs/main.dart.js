@@ -82964,7 +82964,7 @@ m=A.cf("Feel free to reach out for collaborations, opportunities or just to say 
 s=q.gabe()
 r=t.p
 s=A.fA(A.c([A.aqK(q.e,B.Fx,p,1,s),B.hQ,A.aqK(q.f,B.Fw,B.z2,1,new A.ag1()),B.hQ,A.aqK(q.r,B.Fv,p,4,s),B.yD,A.fm(A.aE4(B.F8,B.U_,q.gac1(),A.atN(p,p,B.kT,new A.cu(A.hG(14),B.q),p)),p,1/0)],r),B.a7,B.a2,B.ak)
-return A.Lt(n,p,A.aqA(A.fA(A.c([l,B.kX,m,B.yE,B.CM,B.CN,B.CL,B.CK,B.ME,new A.xx(s,B.ix,q.d)],r),B.b6,B.a2,B.ak),B.j8),p)}}
+return A.Lt(n,p,A.aqA(A.fA(A.c([l,B.kX,m,B.yE,B.CN,B.CM,B.CL,B.CK,B.ME,new A.xx(s,B.ix,q.d)],r),B.b6,B.a2,B.ak),B.j8),p)}}
 A.ag1.prototype={
 $1(a){var s=B.d.t(a,"@")
 if(!s)return"Enter a valid email"
@@ -86507,10 +86507,10 @@ B.F0=new A.bN(59122,"MaterialIcons",!1)
 B.CK=new A.nN(B.F0,"LinkedIn","linkedin.com/in/noor-fatima-6034bb3b4",null)
 B.jR=new A.bN(57718,"MaterialIcons",!1)
 B.CL=new A.nN(B.jR,"GitHub","github.com/noorfatima-0319",null)
-B.EM=new A.bN(57898,"MaterialIcons",!1)
-B.CM=new A.nN(B.EM,"Email","noorfatima0319.dev@gmail.com",null)
 B.EU=new A.bN(58530,"MaterialIcons",!1)
-B.CN=new A.nN(B.EU,"Phone","+92 319 081801",null)
+B.CM=new A.nN(B.EU,"Phone","+92 319 0681801",null)
+B.EM=new A.bN(57898,"MaterialIcons",!1)
+B.CN=new A.nN(B.EM,"Email","noorfatima0319.dev@gmail.com",null)
 B.fB=new A.h9(0,"cut")
 B.fC=new A.h9(1,"copy")
 B.fD=new A.h9(2,"paste")
