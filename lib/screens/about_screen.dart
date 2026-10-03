@@ -6,9 +6,7 @@ import '../widgets/profile_avatar.dart';
 import '../widgets/section_title.dart';
 
 class AboutScreen extends StatelessWidget {
-  final VoidCallback onBack;
-
-  const AboutScreen({super.key, required this.onBack});
+  const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class AboutScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Icons.arrow_back), onPressed: onBack),
+        automaticallyImplyLeading: false,
         title: const Text('About Me'),
       ),
       body: SingleChildScrollView(

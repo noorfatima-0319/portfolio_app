@@ -28,8 +28,8 @@ class _MainScreenState extends State<MainScreen> {
 
     final pages = [
       HomeScreen(onToggleTheme: widget.onToggleTheme, onGoToTab: _goTo),
-      AboutScreen(onBack: () => _goTo(0)),
-      ContactScreen(onBack: () => _goTo(0)),
+      const AboutScreen(),
+      const ContactScreen(),
     ];
 
     return Scaffold(
