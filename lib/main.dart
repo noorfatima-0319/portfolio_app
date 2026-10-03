@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'constants/app_routes.dart';
+import 'screens/main_screen.dart';
 import 'screens/splash_screen.dart';
 import 'theme/app_theme.dart';
 
@@ -31,7 +33,11 @@ class _PortfolioAppState extends State<PortfolioApp> {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: _isDark ? ThemeMode.dark : ThemeMode.light,
-      home: SplashScreen(onToggleTheme: _toggleTheme),
+      initialRoute: AppRoutes.splash,
+      routes: {
+        AppRoutes.splash: (_) => const SplashScreen(),
+        AppRoutes.home: (_) => MainScreen(onToggleTheme: _toggleTheme),
+      },
     );
   }
 }
