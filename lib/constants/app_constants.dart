@@ -43,7 +43,6 @@ class AppConstants {
     Skill(name: 'Reading', icon: Icons.menu_book),
   ];
 
-  // Add new projects here once they have a public repo or live demo to link to.
   static const List<Project> projects = [
     Project(
       title: 'Personal Portfolio App',
