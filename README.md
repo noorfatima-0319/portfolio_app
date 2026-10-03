@@ -18,13 +18,13 @@ This project demonstrates the foundations of mobile app development covered in W
 | **About** | Detailed bio, skills, education, and interests. |
 | **Contact** | Email, phone, GitHub and LinkedIn details (tap to copy), plus a message form with input validation. |
 
-Navigation between screens uses a bottom navigation bar, with `IndexedStack` to switch between Home, About and Contact.
+Navigation between screens uses **named routes** (`/` for Splash and `/home` for the main app) and a bottom navigation bar, with `IndexedStack` to switch between Home, About and Contact.
 
 ## Concepts Applied
 
 - **Widgets & UI Components:** `Scaffold`, `AppBar`, `Card`, `ListTile`, `Chip`, `TextFormField`, custom widgets
 - **Layouts:** `Row`, `Column`, `Stack`, `Wrap`, `Expanded`, `GridView`, built responsively with `LayoutBuilder`
-- **Navigation:** Bottom navigation bar (Home / About / Contact) and `Navigator.pushReplacement` from Splash to the main app
+- **Navigation:** Named routes defined in `MaterialApp` (`AppRoutes.splash`, `AppRoutes.home`), `Navigator.pushReplacementNamed` from Splash to the main app, and a bottom navigation bar (Home / About / Contact)
 - **State management basics:** `StatefulWidget` and `setState()` — used for the bottom navigation tab switching, the light/dark theme toggle, and the contact form
 - **Reusable widgets:** `CustomButton`, `SkillCard`, `ProjectCard`, `ContactCard`, `InfoCard`, `SectionTitle`, `ProfileAvatar` — built once and reused across screens
 - **Debugging & Hot Reload:** used throughout development to test UI changes quickly
@@ -35,7 +35,8 @@ Navigation between screens uses a bottom navigation bar, with `IndexedStack` to 
 lib/
 ├── main.dart                 # App entry point, theme state
 ├── constants/
-│   └── app_constants.dart    # All text content and data in one place
+│   ├── app_constants.dart    # All text content and data in one place
+│   └── app_routes.dart       # Named route constants
 ├── models/
 │   ├── skill_model.dart
 │   └── project_model.dart
@@ -66,6 +67,19 @@ lib/
 
 - Flutter & Dart
 - `google_fonts` package (for typography)
+
+## Prerequisites
+
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) **3.38 or newer** (this project needs Dart `^3.10.8`, which ships with that Flutter version)
+- An editor such as VS Code or Android Studio with the Flutter plugin
+- An Android emulator, a physical device, or Chrome for running the web version
+
+Run `flutter doctor` first and fix anything it flags before continuing:
+
+```bash
+flutter --version
+flutter doctor
+```
 
 ## Setup Instructions
 
