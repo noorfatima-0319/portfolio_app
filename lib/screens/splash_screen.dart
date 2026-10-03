@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../constants/app_constants.dart';
-import '../theme/app_theme.dart';
-import 'main_screen.dart';
+import '../constants/app_routes.dart';
 
 class SplashScreen extends StatefulWidget {
-  final VoidCallback onToggleTheme;
-
-  const SplashScreen({super.key, required this.onToggleTheme});
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -30,35 +27,34 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => MainScreen(onToggleTheme: widget.onToggleTheme),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, AppRoutes.home);
     });
   }
 
-  Widget _glow(double size) {
+  Widget _glow(double size, Color color) {
     return Container(
       width: size,
       height: size,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: RadialGradient(colors: [Color(0x663B82F6), Color(0x003B82F6)]),
+        gradient: RadialGradient(
+          colors: [color.withValues(alpha: 0.4), color.withValues(alpha: 0)],
+        ),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: AppTheme.bg,
+      // Background comes from the theme, so it follows light/dark mode
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Positioned(top: -120, right: -100, child: _glow(320)),
-          Positioned(bottom: -150, left: -120, child: _glow(360)),
+          Positioned(top: -120, right: -100, child: _glow(320, colors.primary)),
+          Positioned(bottom: -150, left: -120, child: _glow(360, colors.primary)),
           Center(
             child: AnimatedOpacity(
               opacity: _visible ? 1 : 0,
@@ -66,31 +62,42 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text.rich(
+                  Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: 'N', style: TextStyle(color: Colors.white)),
-                        TextSpan(text: 'F', style: TextStyle(color: AppTheme.blue)),
+                        const TextSpan(text: 'N'),
+                        TextSpan(text: 'F', style: TextStyle(color: colors.primary)),
                       ],
                     ),
-                    style: TextStyle(fontSize: 72, fontWeight: FontWeight.w800),
+                    style: TextStyle(
+                      fontSize: 72,
+                      fontWeight: FontWeight.w800,
+                      color: colors.onSurface,
+                    ),
                   ),
                   const SizedBox(height: 24),
-                  const Text(
+                  Text(
                     AppConstants.name,
                     style: TextStyle(
-                        fontSize: 28, fontWeight: FontWeight.w600, color: Colors.white),
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600,
+                      color: colors.onSurface,
+                    ),
                   ),
                   const SizedBox(height: 6),
-                  const Text(
+                  Text(
                     AppConstants.title,
-                    style: TextStyle(fontSize: 16, color: AppTheme.mist),
+                    style: TextStyle(fontSize: 16, color: colors.onSurfaceVariant),
                   ),
                   const SizedBox(height: 24),
-                  const Text(
+                  Text(
                     AppConstants.tagline,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white54, letterSpacing: 1, height: 1.5),
+                    style: TextStyle(
+                      color: colors.onSurface.withValues(alpha: 0.6),
+                      letterSpacing: 1,
+                      height: 1.5,
+                    ),
                   ),
                 ],
               ),
