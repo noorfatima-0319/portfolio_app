@@ -25,7 +25,6 @@ class _ContactScreenState extends State<ContactScreen> {
     super.dispose();
   }
 
-  // Text before @, text after @, and a dot in the domain with a 2+ letter ending
   static final _emailPattern =
       RegExp(r'^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[^\s@.]{2,}$');
 
