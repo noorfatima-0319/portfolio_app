@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            // 3 columns on phones, 6 on wider screens
+
             LayoutBuilder(
               builder: (context, constraints) {
                 return GridView.count(
