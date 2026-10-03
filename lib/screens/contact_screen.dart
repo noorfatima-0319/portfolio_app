@@ -5,9 +5,7 @@ import '../widgets/contact_card.dart';
 import '../widgets/section_title.dart';
 
 class ContactScreen extends StatefulWidget {
-  final VoidCallback onBack;
-
-  const ContactScreen({super.key, required this.onBack});
+  const ContactScreen({super.key});
 
   @override
   State<ContactScreen> createState() => _ContactScreenState();
@@ -27,8 +25,21 @@ class _ContactScreenState extends State<ContactScreen> {
     super.dispose();
   }
 
+  // Text before @, text after @, and a dot in the domain with a 2+ letter ending
+  static final _emailPattern =
+      RegExp(r'^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[^\s@.]{2,}$');
+
   String? _required(String? value) {
     if (value == null || value.trim().isEmpty) return 'This field is required';
+    return null;
+  }
+
+  String? _validateEmail(String? value) {
+    final email = value?.trim() ?? '';
+    if (email.isEmpty) return 'This field is required';
+    if (!_emailPattern.hasMatch(email)) {
+      return 'Enter a valid email (e.g. name@example.com)';
+    }
     return null;
   }
 
@@ -37,7 +48,7 @@ class _ContactScreenState extends State<ContactScreen> {
 
     // this is a UI demo, so nothing is sent anywhere
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("'It's just a demo form ")),
+      const SnackBar(content: Text('Message sent (demo only)')),
     );
     _nameController.clear();
     _emailController.clear();
@@ -50,7 +61,7 @@ class _ContactScreenState extends State<ContactScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Icons.arrow_back), onPressed: widget.onBack),
+        automaticallyImplyLeading: false,
         title: const Text('Contact Me'),
       ),
       body: SingleChildScrollView(
@@ -102,12 +113,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   TextFormField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
-                    validator: (value) {
-                      if (value == null || !value.contains('@')) {
-                        return 'Enter a valid email';
-                      }
-                      return null;
-                    },
+                    validator: _validateEmail,
                     decoration: const InputDecoration(hintText: 'Your Email'),
                   ),
                   const SizedBox(height: 12),
