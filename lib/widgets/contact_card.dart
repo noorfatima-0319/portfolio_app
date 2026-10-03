@@ -7,14 +7,14 @@ class ContactCard extends StatelessWidget {
   final IconData icon;
   final String label;
   final String value;
-  final Color color;
+  final Color? color;
 
   const ContactCard({
     super.key,
     required this.icon,
     required this.label,
     required this.value,
-    this.color = const Color(0xFF3B82F6),
+    this.color,
   });
 
   void _copyValue(BuildContext context) {
@@ -26,6 +26,8 @@ class ContactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final backgroundColor = color ?? Theme.of(context).colorScheme.primary;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: InfoCard(
@@ -35,7 +37,7 @@ class ContactCard extends StatelessWidget {
             width: 44,
             height: 44,
             decoration: BoxDecoration(
-              color: color,
+              color: backgroundColor,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: Colors.white),

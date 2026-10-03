@@ -10,11 +10,13 @@ class SkillCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+
     return InfoCard(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(skill.icon, size: 30, color: skill.color),
+          Icon(skill.icon, size: 30, color: skill.color ?? colors.primary),
           const SizedBox(height: 8),
           Text(skill.name, style: const TextStyle(fontSize: 12)),
         ],
