@@ -19,6 +19,34 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    // On very narrow screens the avatar is stacked above the text
+    final isNarrow = MediaQuery.sizeOf(context).width < 360;
+
+    final intro = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Hello 👋', style: theme.textTheme.titleLarge),
+        Text.rich(
+          TextSpan(
+            text: "I'm ",
+            children: [
+              TextSpan(
+                text: AppConstants.name,
+                style: TextStyle(color: theme.colorScheme.primary),
+              ),
+            ],
+          ),
+          style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 4),
+        Text(AppConstants.title, style: theme.textTheme.titleMedium),
+        const SizedBox(height: 12),
+        Text(
+          AppConstants.bio,
+          style: theme.textTheme.bodySmall?.copyWith(height: 1.6),
+        ),
+      ],
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -35,42 +63,23 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Hello 👋', style: theme.textTheme.titleLarge),
-                      Text.rich(
-                        TextSpan(
-                          text: "I'm ",
-                          children: [
-                            TextSpan(
-                              text: AppConstants.name,
-                              style: TextStyle(
-                                  color: theme.colorScheme.primary),
-                            ),
-                          ],
-                        ),
-                        style: theme.textTheme.headlineSmall
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(AppConstants.title,
-                          style: theme.textTheme.titleMedium),
-                      const SizedBox(height: 12),
-                      Text(
-                        AppConstants.bio,
-                        style: theme.textTheme.bodySmall?.copyWith(height: 1.6),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 16),
-                const ProfileAvatar(radius: 64),
-              ],
-            ),
+            if (isNarrow)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Center(child: ProfileAvatar(radius: 56)),
+                  const SizedBox(height: 16),
+                  intro,
+                ],
+              )
+            else
+              Row(
+                children: [
+                  Expanded(child: intro),
+                  const SizedBox(width: 16),
+                  const ProfileAvatar(radius: 64),
+                ],
+              ),
             const SizedBox(height: 20),
             Row(
               children: [
