@@ -43,31 +43,13 @@ class AppConstants {
     Skill(name: 'Reading', icon: Icons.menu_book),
   ];
 
+  // Add new projects here once they have a public repo or live demo to link to.
   static const List<Project> projects = [
     Project(
       title: 'Personal Portfolio App',
       description: 'A multi-screen Flutter app with clean UI and smooth navigation.',
       icon: Icons.phone_iphone,
-    ),
-    Project(
-      title: 'Cartly',
-      description: 'An e-commerce app for browsing and buying products on mobile.',
-      icon: Icons.shopping_cart,
-    ),
-    Project(
-      title: 'SpendWise',
-      description: 'An expense tracker app to record and manage daily spending.',
-      icon: Icons.account_balance_wallet,
-    ),
-    Project(
-      title: 'Quizora',
-      description: 'A quiz app that lets users test their knowledge with questions.',
-      icon: Icons.quiz,
-    ),
-    Project(
-      title: 'SkyCast',
-      description: 'A weather app that shows current weather information for a city.',
-      icon: Icons.wb_sunny,
+      link: 'https://github.com/noorfatima-0319/portfolio_app',
     ),
   ];
 }
